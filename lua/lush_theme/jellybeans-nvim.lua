@@ -95,6 +95,7 @@ local tea_green  =hsl("#d2ebbe")
 local dell = hsl("#437019")
 local calypso = hsl("#2B5B77")
 
+---@diagnostic disable: undefined-global -- Disable undefined-global diagnostic warning
 local theme = lush(function()
   return {
     -- The following are all the Neovim default highlight groups from the docs
@@ -193,12 +194,12 @@ local theme = lush(function()
     -- Exception      { }, --  try, catch, throw
 
     PreProc        { fg = ship_cove }, -- (preferred) generic Preprocessor
-    Include        { PreProc, gui = "italic" }, --  preprocessor #include
+    Include        { PreProc, gui = "bold" }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = koromiko, gui="italic" }, -- (preferred) int, long, char, etc.
+    Type           { fg = koromiko, gui="bold" }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     Structure      { fg = morning_glory }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
@@ -212,7 +213,7 @@ local theme = lush(function()
 
     Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
     Bold       { gui = "bold" },
-    Italic     { gui = "italic" },
+    -- Italic     { gui = "italic" },
 
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
@@ -265,14 +266,14 @@ local theme = lush(function()
     -- TSBoolean            { };    -- For booleans.
     -- TSCharacter          { };    -- For characters.
     -- TSComment            { };    -- For comment blocks.
-    -- TSConstructor        { };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
+    TSConstructor        { fg = ship_cove.rotate(-30), gui = "bold" };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
     -- TSConditional        { };    -- For keywords related to conditionnals.
-    -- TSConstant           { };    -- For constants
-    -- TSConstBuiltin       { };    -- For constant that are built in the language: `nil` in Lua.
+    TSConstant           { fg = raw_sienna };    -- For constants
+    TSConstBuiltin       { fg = raw_sienna };    -- For constant that are built in the language: `nil` in Lua.
     -- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
     -- TSError              { };    -- For syntax/parser errors.
     -- TSException          { };    -- For exception related keywords.
-    -- TSField              { };    -- For fields.
+    TSField              { fg = ship_cove };    -- For fields.
     -- TSFloat              { };    -- For floats.
     -- TSFunction           { };    -- For function (calls and definitions).
     -- TSFuncBuiltin        { };    -- For builtin functions: `table.insert` in Lua.
@@ -281,17 +282,17 @@ local theme = lush(function()
     -- TSKeyword            { };    -- For keywords that don't fall in previous categories.
     -- TSKeywordFunction    { };    -- For keywords used to define a fuction.
     -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
-    -- TSMethod             { };    -- For method calls and definitions.
+    TSMethod             { fg = goldenrod };    -- For method calls and definitions.
     TSNamespace          { fg = wewak };    -- For identifiers referring to modules and namespaces.
     -- TSNone               { };    -- TODO: docs
     -- TSNumber             { };    -- For all numbers
     -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
     -- TSParameter          { };    -- For parameters of a function.
     -- TSParameterReference { };    -- For references to parameters of a function.
-    -- TSProperty           { };    -- Same as `TSField`.
-    -- TSPunctDelimiter     { };    -- For delimiters ie: `.`
-    -- TSPunctBracket       { };    -- For brackets and parens.
-    -- TSPunctSpecial       { };    -- For special punctutation that does not fall in the catagories before.
+    TSProperty           { fg = ship_cove };    -- Same as `TSField`.
+    TSPunctDelimiter     { fg = hoki };    -- For delimiters ie: `.`
+    TSPunctBracket       { fg = hoki };    -- For brackets and parens.
+    TSPunctSpecial       { fg = hoki.lighten(20) };    -- For special punctutation that does not fall in the catagories before.
     -- TSRepeat             { };    -- For keywords related to loops.
     -- TSString             { };    -- For strings.
     -- TSStringRegex        { };    -- For regexes.
@@ -305,7 +306,7 @@ local theme = lush(function()
     -- TSTag                { };    -- Tags like html tag names.
     TSTagDelimiter       { fg = bayoux_blue };    -- Tag delimiter like `<` `>` `/`
     -- TSText               { };    -- For strings considered text in a markup language.
-    TSEmphasis           { Italic };    -- For text to be represented with emphasis.
+    TSEmphasis           { Bold };    -- For text to be represented with emphasis.
     TSUnderline          { Underlined };    -- For text to be represented with an underline.
     TSStrike             { gui="strikethrough" };    -- For strikethrough text.
     -- TSTitle              { };    -- Text that is part of a title.
@@ -341,6 +342,36 @@ local theme = lush(function()
     NvimTreeGitRenamed { GitSignsChange };
     NvimTreeGitNew     { GitSignsAdd };
     NvimTreeGitDeleted { GitSignsDelete };
+
+    -- nvim-navic
+    NavicIconsFile          { fg = cadet_blue };
+    NavicIconsModule        { fg = brandy };
+    NavicIconsNamespace     { fg = brandy };
+    NavicIconsPackage       { fg = brandy };
+    NavicIconsClass         { fg = koromiko };
+    NavicIconsMethod        { fg = goldenrod };
+    NavicIconsProperty      { fg = ship_cove };
+    NavicIconsField         { fg = ship_cove };
+    NavicIconsConstructor   { fg = ship_cove.rotate(-30) };
+    NavicIconsEnum          { fg = hoki };
+    NavicIconsInterface     { fg = koromiko };
+    NavicIconsFunction      { fg = goldenrod };
+    NavicIconsVariable      { fg = ship_cove };
+    NavicIconsConstant      { fg = raw_sienna };
+    NavicIconsString        { fg = green_smoke };
+    NavicIconsNumber        { fg = raw_sienna };
+    NavicIconsBoolean       { fg = raw_sienna };
+    NavicIconsArray         { fg = hoki };
+    NavicIconsObject        { fg = hoki };
+    NavicIconsKey           { fg = ship_cove };
+    NavicIconsNull          { fg = raw_sienna };
+    NavicIconsEnumMember    { fg = ship_cove };
+    NavicIconsStruct        { fg = hoki };
+    NavicIconsEvent         { fg = biloba_flower };
+    NavicIconsOperator      { fg = morning_glory };
+    NavicIconsTypeParameter { fg = koromiko };
+    NavicText               { fg = perano };
+    NavicSeparator          { Normal };
   }
 end)
 
