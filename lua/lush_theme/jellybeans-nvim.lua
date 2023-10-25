@@ -121,7 +121,7 @@ local theme = lush(function()
     Directory    { fg = brandy }, -- directory names (and other special names in listings)
     DiffAdd      { fg = tea_green, bg = dell  }, -- diff mode: Added line |diff.txt|
     DiffChange   { bg = calypso }, -- diff mode: Changed line |diff.txt|
-    DiffDelete   { fg = temptress, bg = purple }, -- diff mode: Deleted line |diff.txt|
+    DiffDelete   { fg = foreground, bg = old_brick }, -- diff mode: Deleted line |diff.txt|
     DiffText     { fg = morning_glory, bg = total_black }, -- diff mode: Changed text within a changed line |diff.txt|
     -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
